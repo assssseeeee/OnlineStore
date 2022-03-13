@@ -32,6 +32,8 @@
     <string name="register_successful">Your details are valid</string>
     
     <string name="please_wait">Please wait&#8230;</string>
+    <string name="details_valid">Your detail are valid</string>
+    <string name="login_successful">You are logged in successfully</string>
 
 
 </resources>

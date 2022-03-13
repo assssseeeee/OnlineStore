@@ -67,7 +67,7 @@ class RegisterActivity : BaseActivity() {
                 false
             }
 
-            TextUtils.isEmpty(editText_email.text.toString().trim { it <= ' ' }) -> {
+            TextUtils.isEmpty(editText_email_reg.text.toString().trim { it <= ' ' }) -> {
                 showErrorSnackBar(resources.getString(R.string.err_msg_enter_email), true)
                 false
             }
@@ -120,7 +120,7 @@ class RegisterActivity : BaseActivity() {
 
             showProgressDialog(resources.getString(R.string.please_wait))
 
-            val email: String = editText_email.text.toString().trim { it <= ' ' }
+            val email: String = editText_email_reg.text.toString().trim { it <= ' ' }
             val password: String = editText_password.text.toString().trim { it <= ' ' }
 
             FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
@@ -133,6 +133,8 @@ class RegisterActivity : BaseActivity() {
                             "You are registered successful. Your user id is ${firebaseUser.uid}",
                             false
                         )
+                        FirebaseAuth.getInstance().signOut()
+                        finish()
                     } else {
                         showErrorSnackBar(
                             task.exception!!.message.toString(),

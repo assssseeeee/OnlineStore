@@ -109,7 +109,7 @@
 
 
                 <com.example.onlinestore.utils.OSEditText
-                    android:id="@+id/editText_email"
+                    android:id="@+id/editText_email_reg"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textEmailAddress"
