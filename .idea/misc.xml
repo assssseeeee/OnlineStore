@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Alan/AndroidStudioProjects/OnlineStore/app/src/main/res/drawable/button_background.xml" value="0.169" />
+        <entry key="..\:/Users/Alan/AndroidStudioProjects/OnlineStore/app/src/main/res/layout/activity_forgot_password.xml" value="0.25" />
         <entry key="..\:/Users/Alan/AndroidStudioProjects/OnlineStore/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/Users/Alan/AndroidStudioProjects/OnlineStore/app/src/main/res/layout/activity_register.xml" value="0.25" />
         <entry key="..\:/Users/Alan/AndroidStudioProjects/OnlineStore/app/src/main/res/layout/activity_splash.xml" value="0.1762917933130699" />

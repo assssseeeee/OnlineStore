@@ -44,6 +44,7 @@ class RegisterActivity : BaseActivity(), View.OnClickListener {
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true)
             actionBar.setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_ios_24)
+            actionBar.title = null
         }
         toolbar_register_activity.setNavigationOnClickListener { onBackPressed() }
     }
