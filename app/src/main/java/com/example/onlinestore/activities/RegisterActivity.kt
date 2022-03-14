@@ -5,6 +5,7 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
+import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
 import android.widget.TextView
@@ -16,7 +17,7 @@ import com.google.firebase.auth.FirebaseUser
 import kotlinx.android.synthetic.main.activity_register.*
 
 
-class RegisterActivity : BaseActivity() {
+class RegisterActivity : BaseActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
@@ -32,15 +33,8 @@ class RegisterActivity : BaseActivity() {
         }
         setupActionBar()
 
-        textView_login.setOnClickListener {
-            val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
-
-        button_registration.setOnClickListener() {
-           registerUser()
-        }
+        textView_login.setOnClickListener(this)
+        button_registration.setOnClickListener(this)
     }
 
 
@@ -145,4 +139,16 @@ class RegisterActivity : BaseActivity() {
         }
     }
 
+    override fun onClick(view: View?) {
+        if (view != null) {
+            when (view.id) {
+                R.id.button_registration -> {
+                    registerUser()
+                }
+                R.id.textView_login -> {
+                    onBackPressed()
+                }
+            }
+        }
+    }
 }
