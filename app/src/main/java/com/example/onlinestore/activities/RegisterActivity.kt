@@ -9,7 +9,10 @@ import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
 import android.widget.TextView
+import android.widget.Toast
 import com.example.onlinestore.R
+import com.example.onlinestore.firestore.FirestoreClass
+import com.example.onlinestore.models.User
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
@@ -103,7 +106,7 @@ class RegisterActivity : BaseActivity(), View.OnClickListener {
                 false
             }
             else -> {
-                //showErrorSnackBar(resources.getString(R.string.register_successful), false)
+                showErrorSnackBar(resources.getString(R.string.register_successful), false)
                 true
             }
         }
@@ -120,17 +123,20 @@ class RegisterActivity : BaseActivity(), View.OnClickListener {
 
             FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(OnCompleteListener<AuthResult> { task ->
-                    hideProgressDialog()
                     if (task.isSuccessful) {
                         val firebaseUser: FirebaseUser = task.result!!.user!!
 
-                        showErrorSnackBar(
-                            "You are registered successful. Your user id is ${firebaseUser.uid}",
-                            false
+                        val user = User(
+                            firebaseUser.uid,
+                            editText_firstName.text.toString().trim { it <= ' ' },
+                            editText_lastName.text.toString().trim { it <= ' ' },
+                            editText_email_reg.text.toString().trim { it <= ' ' }
                         )
+                        FirestoreClass().registerUser(this@RegisterActivity, user)
                         FirebaseAuth.getInstance().signOut()
                         finish()
                     } else {
+                        hideProgressDialog()
                         showErrorSnackBar(
                             task.exception!!.message.toString(),
                             true
@@ -138,6 +144,16 @@ class RegisterActivity : BaseActivity(), View.OnClickListener {
                     }
                 })
         }
+    }
+
+
+    fun userRegistrationSuccess() {
+        hideProgressDialog()
+        Toast.makeText(
+            this@RegisterActivity,
+            resources.getString(R.string.register_successful),
+            Toast.LENGTH_SHORT
+        ).show()
     }
 
     override fun onClick(view: View?) {
@@ -151,5 +167,5 @@ class RegisterActivity : BaseActivity(), View.OnClickListener {
                 }
             }
         }
-    }
+     }
 }

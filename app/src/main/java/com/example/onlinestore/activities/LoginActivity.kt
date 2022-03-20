@@ -5,11 +5,14 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
 import android.widget.TextView
 import com.example.onlinestore.R
+import com.example.onlinestore.firestore.FirestoreClass
+import com.example.onlinestore.models.User
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_login.editText_password
@@ -32,25 +35,6 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
         textView_forgotPassword.setOnClickListener(this)
         button_login.setOnClickListener(this)
         textView_register.setOnClickListener(this)
-    }
-
-
-    override fun onClick(view: View?) {
-        if (view != null) {
-            when (view.id) {
-                R.id.textView_forgotPassword -> {
-                    val intent = Intent(this@LoginActivity, ForgotPasswordActivity::class.java)
-                    startActivity(intent)
-                }
-                R.id.button_login -> {
-                    loginRegisteredUser()
-                }
-                R.id.textView_register -> {
-                    val intent = Intent(this@LoginActivity, RegisterActivity::class.java)
-                    startActivity(intent)
-                }
-            }
-        }
     }
 
 
@@ -80,15 +64,42 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
 
             FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener { task ->
-                    hideProgressDialog()
                     if (task.isSuccessful) {
-                        showErrorSnackBar(resources.getString(R.string.login_successful), false)
+                        FirestoreClass().getUserDetails(this@LoginActivity)
                     } else {
+                        hideProgressDialog()
                         showErrorSnackBar(task.exception!!.message.toString(), true)
                     }
                 }
+        }
+    }
 
 
+    fun userLoggedInSuccess(user: User) {
+        hideProgressDialog()
+        Log.i("First name", user.firstName)
+        Log.i("Last name", user.lastName)
+        Log.i("Email", user.email)
+        startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+        finish()
+    }
+
+
+    override fun onClick(view: View?) {
+        if (view != null) {
+            when (view.id) {
+                R.id.textView_forgotPassword -> {
+                    val intent = Intent(this@LoginActivity, ForgotPasswordActivity::class.java)
+                    startActivity(intent)
+                }
+                R.id.button_login -> {
+                    loginRegisteredUser()
+                }
+                R.id.textView_register -> {
+                    val intent = Intent(this@LoginActivity, RegisterActivity::class.java)
+                    startActivity(intent)
+                }
+            }
         }
     }
 }
