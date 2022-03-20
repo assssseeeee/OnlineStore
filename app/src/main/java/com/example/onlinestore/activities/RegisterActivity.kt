@@ -156,6 +156,7 @@ class RegisterActivity : BaseActivity(), View.OnClickListener {
         ).show()
     }
 
+
     override fun onClick(view: View?) {
         if (view != null) {
             when (view.id) {

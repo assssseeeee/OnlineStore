@@ -5,6 +5,8 @@
       <map>
         <entry key="..\:/Users/Alan/AndroidStudioProjects/OnlineStore/app/src/main/res/drawable/app_gradient_color_background.xml" value="0.255" />
         <entry key="..\:/Users/Alan/AndroidStudioProjects/OnlineStore/app/src/main/res/drawable/button_background.xml" value="0.169" />
+        <entry key="..\:/Users/Alan/AndroidStudioProjects/OnlineStore/app/src/main/res/drawable/drawable_gender_tab_selector.xml" value="0.255" />
+        <entry key="..\:/Users/Alan/AndroidStudioProjects/OnlineStore/app/src/main/res/drawable/drawable_gender_tab_text_color_selector.xml" value="0.255" />
         <entry key="..\:/Users/Alan/AndroidStudioProjects/OnlineStore/app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.255" />
         <entry key="..\:/Users/Alan/AndroidStudioProjects/OnlineStore/app/src/main/res/drawable/user_image_background.xml" value="0.255" />
         <entry key="..\:/Users/Alan/AndroidStudioProjects/OnlineStore/app/src/main/res/layout/activity_forgot_password.xml" value="0.25" />

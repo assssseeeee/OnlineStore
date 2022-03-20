@@ -41,7 +41,7 @@
 
     <string name="email_sent_success">Email sent successfully to reset your password</string>
 
-    <string name="title_complete_profile">COMPLETE PROFILE</string>
+    <string name="title_complete_profile">PROFILE</string>
     <string name="editText_hint_mobile_number"> Mobile number</string>
     <string name="radioButton_label_male">MALE</string>
     <string name="radioButton_label_female">FEMALE</string>
