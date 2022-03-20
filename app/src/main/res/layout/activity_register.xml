@@ -32,7 +32,10 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar_register_activity">
@@ -61,7 +64,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
-                    android:padding="@dimen/edittext_padding"
+                    android:padding="@dimen/editText_padding"
                     android:textColor="@color/colorPrimaryText"
                     android:textSize="@dimen/editText_textSize" />
 
@@ -87,7 +90,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
-                    android:padding="@dimen/edittext_padding"
+                    android:padding="@dimen/editText_padding"
                     android:textColor="@color/colorPrimaryText"
                     android:textSize="@dimen/editText_textSize" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -113,7 +116,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textEmailAddress"
-                    android:padding="@dimen/edittext_padding"
+                    android:padding="@dimen/editText_padding"
                     android:textColor="@color/colorPrimaryText"
                     android:textSize="@dimen/editText_textSize" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -139,7 +142,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
-                    android:padding="@dimen/edittext_padding"
+                    android:padding="@dimen/editText_padding"
                     android:textColor="@color/colorPrimaryText"
                     android:textSize="@dimen/editText_textSize" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -165,7 +168,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
-                    android:padding="@dimen/edittext_padding"
+                    android:padding="@dimen/editText_padding"
                     android:textColor="@color/colorPrimaryText"
                     android:textSize="@dimen/editText_textSize" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -235,18 +238,18 @@
                     android:layout_height="wrap_content"
                     android:padding="@dimen/clickable_text_view_padding"
                     android:text="@string/already_have_an_account"
-                    android:textSize="@dimen/label_textView_textSize"
-                    android:textColor="@color/colorSecondaryText"/>
+                    android:textColor="@color/colorSecondaryText"
+                    android:textSize="@dimen/label_textView_textSize" />
 
                 <com.example.onlinestore.utils.OSTextViewBold
                     android:id="@+id/textView_login"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:foreground="?attr/selectableItemBackground"
-                    android:text="@string/login"
                     android:padding="@dimen/clickable_text_view_padding"
-                    android:textSize="@dimen/label_textView_textSize"
-                    android:textColor="@color/colorSecondaryText"/>
+                    android:text="@string/login"
+                    android:textColor="@color/colorSecondaryText"
+                    android:textSize="@dimen/label_textView_textSize" />
 
             </LinearLayout>
 

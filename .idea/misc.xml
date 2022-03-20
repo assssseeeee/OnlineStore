@@ -3,11 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Alan/AndroidStudioProjects/OnlineStore/app/src/main/res/drawable/app_gradient_color_background.xml" value="0.255" />
         <entry key="..\:/Users/Alan/AndroidStudioProjects/OnlineStore/app/src/main/res/drawable/button_background.xml" value="0.169" />
+        <entry key="..\:/Users/Alan/AndroidStudioProjects/OnlineStore/app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.255" />
+        <entry key="..\:/Users/Alan/AndroidStudioProjects/OnlineStore/app/src/main/res/drawable/user_image_background.xml" value="0.255" />
         <entry key="..\:/Users/Alan/AndroidStudioProjects/OnlineStore/app/src/main/res/layout/activity_forgot_password.xml" value="0.25" />
         <entry key="..\:/Users/Alan/AndroidStudioProjects/OnlineStore/app/src/main/res/layout/activity_login.xml" value="0.25" />
+        <entry key="..\:/Users/Alan/AndroidStudioProjects/OnlineStore/app/src/main/res/layout/activity_main.xml" value="0.375" />
         <entry key="..\:/Users/Alan/AndroidStudioProjects/OnlineStore/app/src/main/res/layout/activity_register.xml" value="0.25" />
         <entry key="..\:/Users/Alan/AndroidStudioProjects/OnlineStore/app/src/main/res/layout/activity_splash.xml" value="0.1762917933130699" />
+        <entry key="..\:/Users/Alan/AndroidStudioProjects/OnlineStore/app/src/main/res/layout/activity_user_profile.xml" value="0.375" />
         <entry key="..\:/Users/Alan/AndroidStudioProjects/OnlineStore/app/src/main/res/layout/dialog_progress.xml" value="0.25" />
         <entry key="..\:/Users/Alan/AndroidStudioProjects/OnlineStore/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.169" />
       </map>

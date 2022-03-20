@@ -1,11 +1,14 @@
 package com.example.onlinestore.activities
 
+import android.content.Context
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.WindowInsets
 import android.view.WindowManager
 import com.example.onlinestore.R
+import com.example.onlinestore.utils.Constants
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,6 +24,11 @@ class MainActivity : AppCompatActivity() {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN
             )
         }
+
+        val sharedPreferences = getSharedPreferences(Constants.OS_PREFERENCES, Context.MODE_PRIVATE)
+        val userName = sharedPreferences.getString(Constants.LOGGED_IN_USERNAME, "")!!
+
+        text_view_main.text="The logged is $userName"
 
     }
 }

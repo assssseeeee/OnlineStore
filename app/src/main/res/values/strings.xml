@@ -38,8 +38,14 @@
     <string name="title_forgot_password">FORGOT PASSWORD?</string>
     <string name="forgot_password_title_description">Enter your username and email address we\'ll send you an email to reset your password</string>
     <string name="button_label_submit">Submit</string>
-    
+
     <string name="email_sent_success">Email sent successfully to reset your password</string>
+
+    <string name="title_complete_profile">COMPLETE PROFILE</string>
+    <string name="editText_hint_mobile_number"> Mobile number</string>
+    <string name="radioButton_label_male">MALE</string>
+    <string name="radioButton_label_female">FEMALE</string>
+    <string name="button_label_save">Save</string>
 
 
 </resources>

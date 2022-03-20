@@ -1,6 +1,8 @@
 package com.example.onlinestore.firestore
 
 import android.app.Activity
+import android.content.Context
+import android.content.SharedPreferences
 import android.util.Log
 import com.example.onlinestore.activities.LoginActivity
 import com.example.onlinestore.activities.RegisterActivity
@@ -47,6 +49,19 @@ class FirestoreClass {
                 Log.i(activity.javaClass.simpleName.toString(), document.toString())
 
                 val user = document.toObject(User::class.java)!!
+
+                val sharedPreferences =
+                    activity.getSharedPreferences(
+                        Constants.OS_PREFERENCES,
+                        Context.MODE_PRIVATE
+                    )
+
+                val editor: SharedPreferences.Editor = sharedPreferences.edit()
+                editor.putString(
+                    Constants.LOGGED_IN_USERNAME,
+                    "${user.firstName} ${user.lastName}"
+                )
+                editor.apply()
 
                 when (activity) {
                     is LoginActivity -> {
