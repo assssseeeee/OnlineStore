@@ -46,6 +46,7 @@
     <string name="radioButton_label_male">MALE</string>
     <string name="radioButton_label_female">FEMALE</string>
     <string name="button_label_save">Save</string>
+    <string name="read_storage_permission_denied">Read storage permission denied</string>
 
 
 </resources>

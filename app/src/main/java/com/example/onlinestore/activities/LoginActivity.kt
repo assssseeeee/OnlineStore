@@ -13,6 +13,7 @@ import android.widget.TextView
 import com.example.onlinestore.R
 import com.example.onlinestore.firestore.FirestoreClass
 import com.example.onlinestore.models.User
+import com.example.onlinestore.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_login.editText_password
@@ -83,6 +84,7 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
 
         if (user.profileCompleted == 0) {
             val intent = Intent(this@LoginActivity, UserProfileActivity::class.java)
+            intent.putExtra(Constants.EXTRA_USER_DETAILS, user)
             startActivity(intent)
         } else {
             startActivity(Intent(this@LoginActivity, MainActivity::class.java))
