@@ -6,6 +6,7 @@ import android.content.SharedPreferences
 import android.util.Log
 import com.example.onlinestore.activities.LoginActivity
 import com.example.onlinestore.activities.RegisterActivity
+import com.example.onlinestore.activities.UserProfileActivity
 import com.example.onlinestore.models.User
 import com.example.onlinestore.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
@@ -30,8 +31,7 @@ class FirestoreClass {
             }
     }
 
-
-    fun getCurrentUserID(): String {
+    private fun getCurrentUserID(): String {
         val currentUser = FirebaseAuth.getInstance().currentUser
         var currentUserID = ""
         if (currentUser != null) {
@@ -39,7 +39,6 @@ class FirestoreClass {
         }
         return currentUserID
     }
-
 
     fun getUserDetails(activity: Activity) {
         mFirestore.collection(Constants.USERS)
@@ -75,6 +74,29 @@ class FirestoreClass {
                     }
                 }
                 Log.e(activity.javaClass.simpleName.toString(), "error")
+            }
+    }
+
+    fun updateUserProfileData(activity: Activity, userHashMap: HashMap<String, Any>) {
+        mFirestore
+            .collection(Constants.USERS)
+            .document(getCurrentUserID())
+            .update(userHashMap)
+            .addOnSuccessListener {
+                when (activity) {
+                    is UserProfileActivity -> {
+                        activity.userProfileUpdateSuccess()
+
+                    }
+                }
+            }
+            .addOnFailureListener { e ->
+                when (activity) {
+                    is UserProfileActivity -> {
+                        activity.hideProgressDialog()
+                    }
+                }
+                Log.e(activity.javaClass.simpleName, "Error while updating the user details", e)
             }
     }
 }

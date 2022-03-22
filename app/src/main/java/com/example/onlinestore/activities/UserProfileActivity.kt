@@ -1,10 +1,12 @@
 package com.example.onlinestore.activities
 
 import android.Manifest
+import android.app.Activity
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
@@ -12,11 +14,17 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.onlinestore.R
+import com.example.onlinestore.firestore.FirestoreClass
 import com.example.onlinestore.models.User
 import com.example.onlinestore.utils.Constants
+import com.example.onlinestore.utils.GlideLoader
 import kotlinx.android.synthetic.main.activity_user_profile.*
+import java.io.IOException
 
 class UserProfileActivity : BaseActivity(), View.OnClickListener {
+
+    private lateinit var mUserDetails: User
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_profile)
@@ -31,21 +39,21 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
             )
         }
 
-        var userDetails: User = User()
         if (intent.hasExtra(Constants.EXTRA_USER_DETAILS)) {
-            userDetails = intent.getParcelableExtra(Constants.EXTRA_USER_DETAILS)!!
+            mUserDetails = intent.getParcelableExtra(Constants.EXTRA_USER_DETAILS)!!
         }
 
-        editText_first_name_user_profile.isEnabled = true
-        editText_first_name_user_profile.setText(userDetails.firstName)
+        editText_first_name_user_profile.isEnabled = false
+        editText_first_name_user_profile.setText(mUserDetails.firstName)
 
-        editText_last_name_user_profile.isEnabled = true
-        editText_last_name_user_profile.setText(userDetails.lastName)
+        editText_last_name_user_profile.isEnabled = false
+        editText_last_name_user_profile.setText(mUserDetails.lastName)
 
-        editText_email_user_profile.isEnabled = true
-        editText_email_user_profile.setText(userDetails.email)
+        editText_email_user_profile.isEnabled = false
+        editText_email_user_profile.setText(mUserDetails.email)
 
         imageView_user_photo.setOnClickListener(this@UserProfileActivity)
+        button_submit_user_profile.setOnClickListener(this@UserProfileActivity)
     }
 
     override fun onClick(view: View?) {
@@ -57,7 +65,7 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
                             Manifest.permission.READ_EXTERNAL_STORAGE
                         ) == PackageManager.PERMISSION_GRANTED
                     ) {
-                        showErrorSnackBar("You already have the storage permission", false)
+                        Constants.showImageChooser(this)
                     } else {
                         ActivityCompat.requestPermissions(
                             this,
@@ -66,9 +74,37 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
                         )
                     }
                 }
-
+                R.id.button_submit_user_profile -> {
+                    if (validateUserProfileDetails()) {
+                        val userHashMap = HashMap<String, Any>()
+                        val mobileNumber =
+                            editText_mobile_number_user_profile.text.toString().trim { it <= ' ' }
+                        val gender = if (radioButton_male.isChecked) {
+                            Constants.MALE
+                        } else {
+                            Constants.FEMALE
+                        }
+                        if (mobileNumber.isNotEmpty()) {
+                            userHashMap[Constants.MOBILE] = mobileNumber.toLong()
+                        }
+                        userHashMap[Constants.GENDER] = gender
+                        showProgressDialog(resources.getString(R.string.please_wait))
+                        FirestoreClass().updateUserProfileData(this, userHashMap)
+                    }
+                }
             }
         }
+    }
+
+    fun userProfileUpdateSuccess() {
+        hideProgressDialog()
+        Toast.makeText(
+            this@UserProfileActivity,
+            resources.getString(R.string.msg_profile_updating_success), Toast.LENGTH_SHORT
+        ).show()
+
+        startActivity(Intent(this@UserProfileActivity, MainActivity::class.java))
+        finish()
     }
 
     override fun onRequestPermissionsResult(
@@ -79,7 +115,7 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == Constants.READ_STORAGE_PERMISSION_CODE) {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                showErrorSnackBar("The storage permission is granted", false)
+                Constants.showImageChooser(this)
             } else {
                 Toast.makeText(
                     this,
@@ -88,7 +124,45 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
                 ).show()
             }
         }
+    }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == Activity.RESULT_OK) {
+            if (requestCode == Constants.PICK_IMAGE_REQUEST_CODE) {
+                if (data != null) {
+                    try {
+                        val selectedImageFileUri = data.data!!
+                        GlideLoader(this).loadUserPicture(
+                            selectedImageFileUri,
+                            imageView_user_photo
+                        )
+                    } catch (e: IOException) {
+                        e.printStackTrace()
+                        Toast.makeText(
+                            this@UserProfileActivity,
+                            resources.getString(R.string.image_selection_failed),
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+            }
+        }
+    }
 
+    private fun validateUserProfileDetails(): Boolean {
+        return when {
+            TextUtils.isEmpty(
+                editText_mobile_number_user_profile.text.toString().trim { it <= ' ' }) -> {
+                showErrorSnackBar(
+                    resources.getString(R.string.err_msg_enter_mobile_number),
+                    true
+                )
+                false
+            }
+            else -> {
+                true
+            }
+        }
     }
 }
