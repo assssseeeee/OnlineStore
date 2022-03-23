@@ -4,6 +4,7 @@ import android.Manifest
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.text.TextUtils
@@ -24,6 +25,8 @@ import java.io.IOException
 class UserProfileActivity : BaseActivity(), View.OnClickListener {
 
     private lateinit var mUserDetails: User
+    private var mSelectedImageFileUri: Uri? = null
+    private var mUserProfileImageURL: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -75,25 +78,39 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
                     }
                 }
                 R.id.button_submit_user_profile -> {
+
                     if (validateUserProfileDetails()) {
-                        val userHashMap = HashMap<String, Any>()
-                        val mobileNumber =
-                            editText_mobile_number_user_profile.text.toString().trim { it <= ' ' }
-                        val gender = if (radioButton_male.isChecked) {
-                            Constants.MALE
-                        } else {
-                            Constants.FEMALE
-                        }
-                        if (mobileNumber.isNotEmpty()) {
-                            userHashMap[Constants.MOBILE] = mobileNumber.toLong()
-                        }
-                        userHashMap[Constants.GENDER] = gender
                         showProgressDialog(resources.getString(R.string.please_wait))
-                        FirestoreClass().updateUserProfileData(this, userHashMap)
+
+                        if (mSelectedImageFileUri != null) {
+                            FirestoreClass().uploadImageToCloudStorage(this, mSelectedImageFileUri)
+                        } else {
+                            updateUserProfileDetails()
+                        }
                     }
                 }
             }
         }
+    }
+
+    fun updateUserProfileDetails() {
+        val userHashMap = HashMap<String, Any>()
+        val mobileNumber =
+            editText_mobile_number_user_profile.text.toString()
+                .trim { it <= ' ' }
+        val gender = if (radioButton_male.isChecked) {
+            Constants.MALE
+        } else {
+            Constants.FEMALE
+        }
+        if (mUserProfileImageURL.isNotEmpty()) {
+            userHashMap[Constants.IMAGE] = mUserProfileImageURL
+        }
+        if (mobileNumber.isNotEmpty()) {
+            userHashMap[Constants.MOBILE] = mobileNumber.toLong()
+        }
+        userHashMap[Constants.GENDER] = gender
+        FirestoreClass().updateUserProfileData(this, userHashMap)
     }
 
     fun userProfileUpdateSuccess() {
@@ -102,7 +119,6 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
             this@UserProfileActivity,
             resources.getString(R.string.msg_profile_updating_success), Toast.LENGTH_SHORT
         ).show()
-
         startActivity(Intent(this@UserProfileActivity, MainActivity::class.java))
         finish()
     }
@@ -132,9 +148,9 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
             if (requestCode == Constants.PICK_IMAGE_REQUEST_CODE) {
                 if (data != null) {
                     try {
-                        val selectedImageFileUri = data.data!!
+                        mSelectedImageFileUri = data.data!!
                         GlideLoader(this).loadUserPicture(
-                            selectedImageFileUri,
+                            mSelectedImageFileUri!!,
                             imageView_user_photo
                         )
                     } catch (e: IOException) {
@@ -164,5 +180,11 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
                 true
             }
         }
+    }
+
+    fun imageUploadSuccess(imageURL: String) {
+
+        mUserProfileImageURL = imageURL
+        updateUserProfileDetails()
     }
 }
