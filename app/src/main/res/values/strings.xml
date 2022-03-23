@@ -50,6 +50,10 @@
     <string name="image_selection_failed">Image selection failed</string>
     <string name="err_msg_enter_mobile_number">Please enter mobile number</string>
     <string name="msg_profile_updating_success">Your profile is updating successfully</string>
+    <string name="title_activity_dashboard">DashboardActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 
 
 </resources>

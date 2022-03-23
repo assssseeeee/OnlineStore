@@ -93,7 +93,7 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
         }
     }
 
-    fun updateUserProfileDetails() {
+    private fun updateUserProfileDetails() {
         val userHashMap = HashMap<String, Any>()
         val mobileNumber =
             editText_mobile_number_user_profile.text.toString()
@@ -110,6 +110,7 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
             userHashMap[Constants.MOBILE] = mobileNumber.toLong()
         }
         userHashMap[Constants.GENDER] = gender
+        userHashMap[Constants.COMPLETE_PROFILE] = 1
         FirestoreClass().updateUserProfileData(this, userHashMap)
     }
 

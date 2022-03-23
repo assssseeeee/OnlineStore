@@ -20,6 +20,7 @@ object Constants {
     const val GENDER: String = "gender"
     const val IMAGE: String = "image"
     const val USER_PROFILE_IMAGE = "user_profile_image"
+    const val COMPLETE_PROFILE: String = "profileCompleted"
 
     fun showImageChooser(activity: Activity) {
         val galleryIntent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
