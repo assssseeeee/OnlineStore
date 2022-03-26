@@ -12,9 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.OnlineStore">
         <activity
-            android:name=".activities.DashboardActivity"
+            android:name=".activities.DashBoardActivity"
             android:exported="false"
-            android:label="@string/app_name" />
+            android:label="@string/title_activity_dash_board" />
         <activity
             android:name=".activities.UserProfileActivity"
             android:exported="true"

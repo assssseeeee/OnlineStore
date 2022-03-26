@@ -35,11 +35,15 @@ android {
     }
     buildFeatures {
         viewBinding true
+        dataBinding true
+
     }
+    
 }
 
 dependencies {
 
+    def nav_version = "2.4.1"
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation 'com.google.android.material:material:1.5.0'
@@ -54,7 +58,6 @@ dependencies {
 
 
     implementation 'com.google.android.material:material:1.2.0'
-
 
     implementation 'com.google.firebase:firebase-analytics-ktx'
 
@@ -79,4 +82,17 @@ dependencies {
     //Glide
     implementation 'com.github.bumptech.glide:glide:4.13.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.13.0'
+    
+    // Kotlin
+    implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
+    implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
+
+    // Feature module Support
+    implementation("androidx.navigation:navigation-dynamic-features-fragment:$nav_version")
+
+    // Testing Navigation
+    androidTestImplementation("androidx.navigation:navigation-testing:$nav_version")
+
+    // Jetpack Compose Integration
+    implementation("androidx.navigation:navigation-compose:$nav_version")
 }

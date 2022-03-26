@@ -8,22 +8,22 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.onlinestore.R
+import com.example.onlinestore.databinding.ActivityDashBoardBinding
 
-import com.example.onlinestore.databinding.ActivityDashboardBinding
 
-class DashboardActivity : AppCompatActivity() {
+class DashBoardActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityDashboardBinding
+    private lateinit var binding: ActivityDashBoardBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityDashboardBinding.inflate(layoutInflater)
+        binding = ActivityDashBoardBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val navView: BottomNavigationView = binding.navView
 
-        val navController = findNavController(R.id.nav_host_fragment_activity_dashboard)
+        val navController = findNavController(R.id.nav_host_fragment_activity_dash_board)
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
