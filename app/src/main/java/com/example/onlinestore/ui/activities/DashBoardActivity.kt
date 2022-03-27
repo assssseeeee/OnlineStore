@@ -1,6 +1,7 @@
 package com.example.onlinestore.ui.activities
 
 import android.os.Bundle
+import android.view.Menu
 import androidx.core.content.ContextCompat
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.navigation.findNavController
@@ -17,7 +18,7 @@ class DashBoardActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        
         binding = ActivityDashBoardBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
