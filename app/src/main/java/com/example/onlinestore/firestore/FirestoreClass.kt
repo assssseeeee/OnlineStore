@@ -5,9 +5,9 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.net.Uri
 import android.util.Log
-import com.example.onlinestore.activities.LoginActivity
-import com.example.onlinestore.activities.RegisterActivity
-import com.example.onlinestore.activities.UserProfileActivity
+import com.example.onlinestore.ui.activities.LoginActivity
+import com.example.onlinestore.ui.activities.RegisterActivity
+import com.example.onlinestore.ui.activities.UserProfileActivity
 import com.example.onlinestore.models.User
 import com.example.onlinestore.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
@@ -15,7 +15,6 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
-import java.net.URI
 
 class FirestoreClass {
 

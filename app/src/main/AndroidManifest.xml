@@ -12,34 +12,34 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.OnlineStore">
         <activity
-            android:name=".activities.DashBoardActivity"
+            android:name="com.example.onlinestore.ui.activities.DashBoardActivity"
             android:exported="false"
             android:label="@string/title_activity_dash_board" />
         <activity
-            android:name=".activities.UserProfileActivity"
+            android:name="com.example.onlinestore.ui.activities.UserProfileActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
         <activity
-            android:name=".activities.ForgotPasswordActivity"
+            android:name="com.example.onlinestore.ui.activities.ForgotPasswordActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
         <activity
-            android:name=".activities.BaseActivity"
+            android:name="com.example.onlinestore.ui.activities.BaseActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.RegisterActivity"
+            android:name="com.example.onlinestore.ui.activities.RegisterActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
         <activity
-            android:name=".activities.LoginActivity"
+            android:name="com.example.onlinestore.ui.activities.LoginActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
         <activity
-            android:name=".activities.SplashActivity"
+            android:name="com.example.onlinestore.ui.activities.SplashActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar">
@@ -50,7 +50,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.MainActivity"
+            android:name="com.example.onlinestore.ui.activities.MainActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />

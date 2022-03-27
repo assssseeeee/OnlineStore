@@ -1,4 +1,4 @@
-package com.example.onlinestore.activities
+package com.example.onlinestore.ui.activities
 
 import android.Manifest
 import android.app.Activity

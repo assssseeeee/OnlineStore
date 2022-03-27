@@ -1,14 +1,11 @@
-package com.example.onlinestore.activities
+package com.example.onlinestore.ui.activities
 
-import android.content.Intent
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
-import android.widget.TextView
 import android.widget.Toast
 import com.example.onlinestore.R
 import com.example.onlinestore.firestore.FirestoreClass

@@ -1,15 +1,12 @@
-package com.example.onlinestore.activities
+package com.example.onlinestore.ui.activities
 
 import android.content.Intent
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Log
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
-import android.widget.TextView
 import com.example.onlinestore.R
 import com.example.onlinestore.firestore.FirestoreClass
 import com.example.onlinestore.models.User
@@ -17,7 +14,6 @@ import com.example.onlinestore.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_login.editText_password
-import kotlinx.android.synthetic.main.activity_register.*
 
 class LoginActivity : BaseActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
