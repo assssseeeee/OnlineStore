@@ -25,4 +25,7 @@
 
     <color name="colorLightGray">#f1f1f1</color>
 
+    <color name="colorBorder">#e8e6e6</color>
+    <color name="colorDarkGray">#878787</color>
+
 </resources>

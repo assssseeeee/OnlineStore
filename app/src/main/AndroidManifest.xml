@@ -13,7 +13,9 @@
         android:theme="@style/Theme.OnlineStore">
         <activity
             android:name=".ui.activities.SettingsActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
         <activity
             android:name=".ui.activities.DashBoardActivity"
             android:exported="false"
