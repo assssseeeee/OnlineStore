@@ -63,7 +63,8 @@
                 android:layout_margin="@dimen/settings_user_picture_margin"
                 android:contentDescription="@string/content_description"
                 android:scaleType="fitXY"
-                android:src="@drawable/user_image_background" />
+                android:background="@color/colorLightGray"
+                android:src="@drawable/ic_baseline_person_24" />
 
             <View
                 android:layout_width="match_parent"
@@ -76,7 +77,7 @@
             android:id="@+id/textView_edit_settings"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/frameLayout_user_image_settings"
+            android:layout_below="@id/frameLayout_header_image_settings"
             android:layout_alignParentEnd="true"
             android:layout_margin="16dp"
             android:background="@drawable/item_grey_border_background"
@@ -93,11 +94,91 @@
             android:id="@+id/textView_name_settings"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/textView_edit_settings"
-            android:layout_centerHorizontal="true" />
+            android:layout_below="@+id/frameLayout_user_image_settings"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/settings_name_marginTop"
+            android:textColor="@color/colorDarkGray"
+            android:textSize="@dimen/settings_name_textSize"
+            tools:text="alan" />
+
+        <com.example.onlinestore.utils.OSTextView
+            android:id="@+id/textView_gender_settings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView_name_settings"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/settings_info_marginTop"
+            android:textColor="@color/colorSecondaryText"
+            android:textSize="@dimen/settings_info_textSize"
+            tools:text="male" />
+
+        <com.example.onlinestore.utils.OSTextView
+            android:id="@+id/textView_email_settings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView_gender_settings"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/settings_info_marginTop"
+            android:textColor="@color/colorSecondaryText"
+            android:textSize="@dimen/settings_info_textSize"
+            tools:text="asdfg@gmail.com" />
+
+        <com.example.onlinestore.utils.OSTextView
+            android:id="@+id/textView_mobileNumber_settings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView_email_settings"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/settings_info_marginTop"
+            android:textColor="@color/colorSecondaryText"
+            android:textSize="@dimen/settings_info_textSize"
+            tools:text="+375444444444" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout_address_settings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView_mobileNumber_settings"
+            android:layout_margin="@dimen/settings_address_margin"
+            android:background="@drawable/item_grey_border_background"
+            android:foreground="?attr/selectableItemBackground"
+            android:orientation="horizontal"
+            android:padding="@dimen/settings_address_padding">
+
+            <com.example.onlinestore.utils.OSTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/settings_label_addresses_margin"
+                android:layout_weight="1"
+                android:text="@string/label_addresses"
+                android:textColor="@color/colorSecondaryText"
+                android:textSize="@dimen/settings_label_addresses_textSize" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/content_description"
+                android:src="@drawable/ic_vector_chevron_right" />
+        </LinearLayout>
+
+        <com.example.onlinestore.utils.OSButton
+            android:id="@+id/button_logout_settings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/linearLayout_address_settings"
+            android:layout_marginStart="@dimen/settings_button_marginStartEnd"
+            android:layout_marginTop="@dimen/settings_button_marginTopBottom"
+            android:layout_marginEnd="@dimen/settings_button_marginStartEnd"
+            android:layout_marginBottom="@dimen/settings_button_marginTopBottom"
+            android:background="@drawable/button_background"
+            android:foreground="?attr/selectableItemBackground"
+            android:gravity="center"
+            android:paddingTop="@dimen/button_padding"
+            android:paddingBottom="@dimen/button_padding"
+            android:text="@string/label_button_logout"
+            android:textColor="@color/white"
+            android:textSize="@dimen/button_textSize" />
 
 
     </RelativeLayout>
-
-
 </ScrollView>
