@@ -109,7 +109,6 @@ class RegisterActivity : BaseActivity(), View.OnClickListener {
         }
     }
 
-
     private fun registerUser() {
         if (validateRegisterDetails()) {
 
@@ -143,7 +142,6 @@ class RegisterActivity : BaseActivity(), View.OnClickListener {
         }
     }
 
-
     fun userRegistrationSuccess() {
         hideProgressDialog()
         Toast.makeText(
@@ -152,7 +150,6 @@ class RegisterActivity : BaseActivity(), View.OnClickListener {
             Toast.LENGTH_SHORT
         ).show()
     }
-
 
     override fun onClick(view: View?) {
         if (view != null) {

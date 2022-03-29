@@ -6,6 +6,7 @@ import android.view.View
 import com.example.onlinestore.R
 import com.example.onlinestore.firestore.FirestoreClass
 import com.example.onlinestore.models.User
+import com.example.onlinestore.utils.Constants
 
 import com.example.onlinestore.utils.GlideLoader
 import com.google.firebase.auth.FirebaseAuth
@@ -20,7 +21,7 @@ class SettingsActivity : BaseActivity(), View.OnClickListener {
         setContentView(R.layout.activity_settings)
         setupActionBar()
 
-        textView_edit_settings.setOnClickListener(this)
+        textView_edit_settings.setOnClickListener(this@SettingsActivity)
         button_logout_settings.setOnClickListener(this)
     }
 
@@ -70,7 +71,9 @@ class SettingsActivity : BaseActivity(), View.OnClickListener {
                     finish()
                 }
                 R.id.textView_edit_settings -> {
-
+                    val intent = Intent(this@SettingsActivity, UserProfileActivity::class.java)
+                    intent.putExtra(Constants.EXTRA_USER_DETAILS, mUserDetails)
+                    startActivity(intent)
                 }
             }
         }
