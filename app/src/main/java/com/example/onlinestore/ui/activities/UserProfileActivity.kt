@@ -120,7 +120,7 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
             this@UserProfileActivity,
             resources.getString(R.string.msg_profile_updating_success), Toast.LENGTH_SHORT
         ).show()
-        startActivity(Intent(this@UserProfileActivity, DashBoardActivity::class.java))
+        startActivity(Intent(this@UserProfileActivity, MainActivity::class.java))
         finish()
     }
 
