@@ -9,6 +9,7 @@ import com.example.onlinestore.ui.activities.LoginActivity
 import com.example.onlinestore.ui.activities.RegisterActivity
 import com.example.onlinestore.ui.activities.UserProfileActivity
 import com.example.onlinestore.models.User
+import com.example.onlinestore.ui.activities.SettingsActivity
 import com.example.onlinestore.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -69,10 +70,16 @@ class FirestoreClass {
                     is LoginActivity -> {
                         activity.userLoggedInSuccess(user)
                     }
+                    is SettingsActivity -> {
+                        activity.userDetailsSuccess(user)
+                    }
                 }
             }.addOnFailureListener { e ->
                 when (activity) {
                     is LoginActivity -> {
+                        activity.hideProgressDialog()
+                    }
+                    is SettingsActivity -> {
                         activity.hideProgressDialog()
                     }
                 }
