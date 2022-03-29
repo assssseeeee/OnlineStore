@@ -10,11 +10,11 @@ import java.net.URI
 
 class GlideLoader(val context: Context) {
 
-    fun loadUserPicture(imageURI: Uri, imageView: ImageView) {
+    fun loadUserPicture(image: Any, imageView: ImageView) {
 
         try {
             Glide.with(context)
-                .load(imageURI)
+                .load(image)
                 .centerCrop()
                 .placeholder(R.drawable.ic_baseline_person_24)
                 .into(imageView)
