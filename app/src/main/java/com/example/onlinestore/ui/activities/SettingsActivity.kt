@@ -1,18 +1,27 @@
 package com.example.onlinestore.ui.activities
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import com.example.onlinestore.R
 import com.example.onlinestore.firestore.FirestoreClass
 import com.example.onlinestore.models.User
 
 import com.example.onlinestore.utils.GlideLoader
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_settings.*
 
-class SettingsActivity : BaseActivity() {
+class SettingsActivity : BaseActivity(), View.OnClickListener {
+
+    private lateinit var mUserDetails: User
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
         setupActionBar()
+
+        textView_edit_settings.setOnClickListener(this)
+        button_logout_settings.setOnClickListener(this)
     }
 
     private fun setupActionBar() {
@@ -33,6 +42,7 @@ class SettingsActivity : BaseActivity() {
     }
 
     fun userDetailsSuccess(user: User) {
+        mUserDetails = user
         hideProgressDialog()
         GlideLoader(this@SettingsActivity).loadUserPicture(
             user.image,
@@ -47,5 +57,22 @@ class SettingsActivity : BaseActivity() {
     override fun onResume() {
         super.onResume()
         getUserDetails()
+    }
+
+    override fun onClick(view: View?) {
+        if (view != null) {
+            when (view.id) {
+                R.id.button_logout_settings -> {
+                    FirebaseAuth.getInstance().signOut()
+                    val intent = Intent(this@SettingsActivity, LoginActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    startActivity(intent)
+                    finish()
+                }
+                R.id.textView_edit_settings -> {
+
+                }
+            }
+        }
     }
 }

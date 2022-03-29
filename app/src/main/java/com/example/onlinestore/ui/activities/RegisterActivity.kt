@@ -1,5 +1,6 @@
 package com.example.onlinestore.ui.activities
 
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.text.TextUtils
@@ -32,7 +33,6 @@ class RegisterActivity : BaseActivity(), View.OnClickListener {
             )
         }
         setupActionBar()
-
         textView_login.setOnClickListener(this)
         button_registration.setOnClickListener(this)
     }
@@ -165,5 +165,5 @@ class RegisterActivity : BaseActivity(), View.OnClickListener {
                 }
             }
         }
-     }
+    }
 }
